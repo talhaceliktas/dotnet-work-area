@@ -27,7 +27,7 @@ namespace Example_1
                 context.Response.Headers["X-Guvenlik-Kontrolu"] = "Gecti";
                 context.Response.StatusCode = 200;
                 await context.Response.WriteAsync("Success");
-                await next(context);
+                return;
         }
 
     }

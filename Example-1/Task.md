@@ -1,4 +1,4 @@
-﻿🌟 Task: “VIP Payment Guardian” (Security Middleware)
+﻿🌟 Task 1: “VIP Payment Guardian” (Security Middleware)
 I expect you to write code that meets the following 5 requirements exactly:
 
 1. Scope (UseWhen):
@@ -27,4 +27,34 @@ The static class containing the extension method.
 
 The magic lines in the Program.cs file showing how to chain these together (the UseWhen and UseOdemeFedaisi sections).
 
-Translated with DeepL.com (free version)
+
+
+
+🌪️ Task 2: “Crisis Center” (Global Exception Handler)
+I want you to write a “Crisis Center” middleware at the very top of the project that wraps everything. You will place the entire production pipeline inside a try-catch block.
+Here are the challenging task requirements:
+1. Scope (Container): This middleware will not use UseWhen. It will wrap the entire system without distinction. When the innermost workers (controllers or other middleware) throw an error, that error must propagate upward and land in this middleware’s catch block. (The order in Program.cs is critical for this!)
+2. Catching and Handling (Catch & Response): When you catch an error, do the following:
+Set the response status code to 500 Internal Server Error.
+Set the content type to application/json.
+Send the following JSON response to the user (Postman) (You can use `WriteAsJsonAsync` for this):
+JSON
+{
+    “success”: false,
+    “message”: “An unexpected system failure has occurred; our teams are addressing it.”,
+    “errorDetail”: “Print the actual error message (Exception.Message) here.”
+}
+3. Test Bomb (Endpoint): Add the following route to your Program.cs file specifically to test this system—it intentionally throws an exception when a request is made:
+C#
+app.MapGet(“/bomba”, () => {
+    throw new Exception(“Database connection lost!”);
+});
+Expected Delivery
+The KrizMasasiMiddleware class.
+The UseKrizMasasi() extension method.
+The final version of the Program.cs file.
+Big Hint: If a worker slips and falls on the assembly line (an error), who can save him? Of course, the person who let him in through the door at the very beginning of that line! The location of the crisis desk within Program.cs is the key to success.
+
+
+
+

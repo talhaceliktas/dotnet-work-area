@@ -1,9 +1,13 @@
+using Middlewares.CustomMiddlewares;
 
 var builder = WebApplication.CreateBuilder(args);
+builder.Services.AddTransient<MyCustomMiddleware>();
 var app = builder.Build();
 
 // Kronometre
 //app.UseMiddleware<MyCustomMiddleware>();
+app.UseMyCustomMiddleware();
+app.UseHelloMiddleware();
 
 // Middleware 2
 app.Use(async (HttpContext context, RequestDelegate next) =>

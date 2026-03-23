@@ -8,13 +8,15 @@ var app = builder.Build();
 
 app.UseGlobalErrorHandler();
 
-
-app.MapGet("/", () => "Hello World!");
-
-
 app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/odeme"), (IApplicationBuilder app) =>
 {
     app.UseOdemeFedaisi();
+});
+
+app.MapGet("/", () => "Hello World!");
+
+app.MapGet("/bomb", () => {
+    throw new Exception("Bomb Exploded!");
 });
 
 app.Run();

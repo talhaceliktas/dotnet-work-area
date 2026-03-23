@@ -1,8 +1,13 @@
-using Example_1;
+using Example_1.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
+
 builder.Services.AddTransient<OdemeFedaisi>();
+
 var app = builder.Build();
+
+app.UseGlobalErrorHandler();
+
 
 app.MapGet("/", () => "Hello World!");
 

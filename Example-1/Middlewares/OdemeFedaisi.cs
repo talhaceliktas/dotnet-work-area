@@ -1,6 +1,6 @@
 ﻿using Microsoft.AspNetCore.Http.HttpResults;
 
-namespace Example_1
+namespace Example_1.Middlewares
 {
     public class OdemeFedaisi : IMiddleware
     {

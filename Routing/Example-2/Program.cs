@@ -8,7 +8,6 @@ var app = builder.Build();
 
 app.UseIstekGunlukcusu();
 
-
 app.UseYetkiKontrolcusu();
 
 

@@ -11,7 +11,7 @@
 
         public async Task Invoke(HttpContext httpContext) {
             Console.WriteLine($"METHOD: {httpContext.Request.Method} | PATH: {httpContext.Request.Path}" +
-                $" | TIMESTAMP:{httpContext.Request.Headers.Date}");
+                $" | TIMESTAMP:{DateTimeOffset.Now.ToUnixTimeSeconds()}");
 
             await _next(httpContext);
 

@@ -11,4 +11,11 @@
             await next(context);
         }
     }
+
+    public static class YetkiKontrolcusuExtensions
+    {
+        public static IApplicationBuilder UseYetkiKontrolcusu(this IApplicationBuilder builder) {
+            return builder.UseMiddleware<YetkiKontrolcusu>();
+        }
+    }
 }

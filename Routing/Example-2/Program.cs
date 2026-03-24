@@ -1,5 +1,17 @@
+using Example_2.Middlewares;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddTransient<YetkiKontrolcusu>();
+
 var app = builder.Build();
+
+app.UseIstekGunlukcusu();
+
+
+app.UseYetkiKontrolcusu();
+
+
 
 app.MapGet("saglik", async (HttpContext context) =>
 {

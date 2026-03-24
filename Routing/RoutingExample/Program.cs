@@ -51,6 +51,8 @@ app.Map("cities/{cityId:guid}", async (HttpContext context, Guid cityId) =>
 });
 
 
+
+// End point selection order
 app.Map("sales-report/{year:int:min(1900)}/{month:allowedMonths}",
     async (HttpContext context, int year, string month) => {
 
@@ -70,6 +72,7 @@ app.Map("sales-report/2026/apr",
         await context.Response.WriteAsync($"Direct Sales Report from 2026 - APR 2");
 });
 
+//
 
 
 app.MapFallback(async (HttpContext context) => {

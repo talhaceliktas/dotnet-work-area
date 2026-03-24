@@ -12,6 +12,13 @@ app.Map("files/{filename}.{extension}", async (HttpContext context, string exten
     await context.Response.WriteAsync($"In files - {fileName} - {extension}");
 });
 
+// Eg: employee/profile/{employeeName}
+
+app.Map("employee/profile/{employeeName}", async (HttpContext context, string employeeName) => {
+    await context.Response.WriteAsync($"Hello {employeeName}");
+});
+
+
 app.MapFallback(async (HttpContext context) => {
     await context.Response.WriteAsync($"Request recieved from {context.Request.Path}");
 });

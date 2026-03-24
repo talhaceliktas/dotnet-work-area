@@ -12,11 +12,19 @@ app.Map("files/{filename}.{extension}", async (HttpContext context, string exten
     await context.Response.WriteAsync($"In files - {fileName} - {extension}");
 });
 
-// Eg: employee/profile/{employeeName}
 
+// Eg: employee/profile/{employeeName}
 app.Map("employee/profile/{employeeName=Scott}", async (HttpContext context, string employeeName) => {
     await context.Response.WriteAsync($"Hello {employeeName}");
 });
+
+
+// Eg: products/details/{id}
+app.Map("product/details/{id=1}", (HttpContext context, int id) =>
+{
+    context.Response.WriteAsync($"Product details - {id}");
+});
+
 
 
 app.MapFallback(async (HttpContext context) => {

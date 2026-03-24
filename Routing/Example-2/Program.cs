@@ -10,8 +10,7 @@ app.MapGet("saglik", async (HttpContext context) =>
 });
 
 app.MapGet("gizli", async (HttpContext context) => {
-    context.Response.StatusCode = 301;
-    context.Response.Redirect("saglik");
+    context.Response.Redirect("saglik", true);
 
 });
 

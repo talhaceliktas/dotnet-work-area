@@ -12,5 +12,8 @@ app.Map("map2", async (HttpContext context) => {
     await context.Response.WriteAsync("Hello from Map 2");
 });
 
+app.MapFallback(async (HttpContext context) => {
+    await context.Response.WriteAsync($"Request recieved from {context.Request.Path}");
+});
 
 app.Run();

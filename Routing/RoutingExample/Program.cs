@@ -27,7 +27,14 @@ app.Map("product/details/{id:int?}", (HttpContext context, int? id) =>
     else
         context.Response.WriteAsync($"Please provide product id!");
 });
- 
+
+
+
+// Eg: daily-digest-report/{reportDate}
+app.Map("daily-digest-report/{reportDate:datetime}", (HttpContext context, DateTime reportDate) =>
+{
+    context.Response.WriteAsync($"Report Date: {reportDate.ToShortDateString()}");
+});
 
 
 app.MapFallback(async (HttpContext context) => {

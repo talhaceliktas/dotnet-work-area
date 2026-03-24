@@ -4,12 +4,12 @@ var app = builder.Build();
 // Routing is automatically enabled.
 // No need for app.UseRouting() anymore.
 
-app.MapGet("map1", async (HttpContext context) => {
-    await context.Response.WriteAsync("Hello from Map 1");
-});
+// Eg: files/sample.txt
+app.Map("files/{filename}.{extension}", async (HttpContext context, string extension) =>
+{
+    string? fileName = context.Request.RouteValues["filename"]?.ToString();
 
-app.MapPost("map2", async (HttpContext context) => {
-    await context.Response.WriteAsync("Hello from Map 2");
+    await context.Response.WriteAsync($"In files - {fileName} - {extension}");
 });
 
 app.MapFallback(async (HttpContext context) => {

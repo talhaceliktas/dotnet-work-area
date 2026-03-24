@@ -6,4 +6,10 @@
     <ImplicitUsings>enable</ImplicitUsings>
   </PropertyGroup>
 
+  <ItemGroup>
+    <Content Include="myroot\image.jpg" />
+    <Content Include="myroot\sample.pdf" />
+    <Content Include="myroot\text.txt" />
+  </ItemGroup>
+
 </Project>

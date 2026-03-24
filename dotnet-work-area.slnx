@@ -5,4 +5,5 @@
   <Project Path="HTTP-Middleware/Middlewares/Middlewares.csproj" Id="29fa67a0-40cd-41cd-a17b-e8ab9f996701" />
   <Project Path="HTTP-Middleware/UseWhenExample/UseWhenExample.csproj" Id="c70327db-90d8-4f6b-9828-1d6e5b57e1cb" />
   <Project Path="Routing/RoutingExample/RoutingExample.csproj" Id="ed338fae-a350-4fa8-87c8-a9cd0cd0c5c2" />
+  <Project Path="Routing/StaticFilesExample/StaticFilesExample.csproj" Id="ddaf6e72-5f3c-4fdc-a712-8117f5d98c7d" />
 </Solution>

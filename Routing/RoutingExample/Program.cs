@@ -58,6 +58,19 @@ app.Map("sales-report/{year:int:min(1900)}/{month:allowedMonths}",
         await context.Response.WriteAsync($"Sales Report - {year} - {month}");
 });
 
+app.Map("sales-report/2026/{month:allowedMonths}",
+    async (HttpContext context, string month) => {
+
+        await context.Response.WriteAsync($"Direct Sales Report from 2026 - {month} 1");
+});
+
+app.Map("sales-report/2026/apr",
+    async (HttpContext context) => {
+
+        await context.Response.WriteAsync($"Direct Sales Report from 2026 - APR 2");
+});
+
+
 
 app.MapFallback(async (HttpContext context) => {
     await context.Response.WriteAsync($"No route matched at {context.Request.Path}");

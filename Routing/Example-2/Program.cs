@@ -8,6 +8,24 @@ var app = builder.Build();
 
 app.UseIstekGunlukcusu();
 
+app.UseWhen((HttpContext) =>
+    {
+        if(HttpContext.Request.Query.TryGetValue("debug", out var debug))
+        {
+            return debug[0]?.ToString() == "true";
+        }
+        return false;
+
+    },
+    (IApplicationBuilder app) =>
+    {
+        app.Use(async (HttpContext context, RequestDelegate next) =>
+        {
+            await next(context);
+            await context.Response.WriteAsync("\nDEBUG MODU");
+        });
+    });
+
 app.UseYetkiKontrolcusu();
 
 

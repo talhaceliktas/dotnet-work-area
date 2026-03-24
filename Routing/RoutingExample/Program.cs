@@ -1,4 +1,11 @@
+using RoutingExample.Constraints;
+
 var builder = WebApplication.CreateBuilder(args);
+
+builder.Services.AddRouting((options) => {
+    options.ConstraintMap.Add("allowedMonths", typeof(MonthsCustomConstraint));
+});
+
 var app = builder.Build();
 
 // Routing is automatically enabled.
@@ -44,7 +51,7 @@ app.Map("cities/{cityId:guid}", async (HttpContext context, Guid cityId) =>
 });
 
 
-app.Map("sales-report/{year:int:min(1900)}/{month:regex(^apr|jul|oct|jan$)}",
+app.Map("sales-report/{year:int:min(1900)}/{month:allowedMonths}",
     async (HttpContext context, int year, string month) => {
 
 

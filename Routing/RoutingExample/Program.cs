@@ -14,13 +14,15 @@ app.Map("files/{filename}.{extension}", async (HttpContext context, string exten
 
 
 // Eg: employee/profile/{employeeName}
-app.Map("employee/profile/{employeeName=Scott}", async (HttpContext context, string employeeName) => {
+    // minlength(x) - maxlength(x) - length(x, y) - length(x) - min(x) - max(x) - range(x, y)
+
+app.Map("employee/profile/{employeeName:alpha=Scott}", async (HttpContext context, string employeeName) => {
     await context.Response.WriteAsync($"Hello {employeeName}");
 });
 
 
 // Eg: products/details/{id}
-app.Map("product/details/{id:int?}", async (HttpContext context, int? id) =>
+app.Map("product/details/{id:int:min(1):max(100)?}", async (HttpContext context, int? id) =>
 {
     if(id.HasValue)
         await context.Response.WriteAsync($"Product details of ID:{id}");

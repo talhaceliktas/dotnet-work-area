@@ -1,4 +1,7 @@
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder(new WebApplicationOptions() {
+    WebRootPath = "myroot"
+});
+
 var app = builder.Build();
 
 app.UseStaticFiles();

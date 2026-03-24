@@ -12,4 +12,8 @@
     <Content Include="myroot\text.txt" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Folder Include="wwwroot\" />
+  </ItemGroup>
+
 </Project>

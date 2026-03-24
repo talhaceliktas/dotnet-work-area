@@ -92,3 +92,47 @@
 - [ ] Add `app.UseStaticFiles()` so that `/index.html` opens in the browser
 - [ ] **Bonus:** Create a custom folder named `PublicAssets` instead of `wwwroot`, configure `StaticFileOptions` + `PhysicalFile
 
+---
+
+## ✅ TASK 5 — Put It All Together: Real-World Scenario
+
+**Objective:** Write a realistic API skeleton that combines everything from the previous 4 tasks into a single `Program.cs` file.
+
+### Scenario:
+You are writing an **Unmanned Aerial Vehicle (UAV) Inventory API**. Unauthorized access must be prevented, requests must be logged, and errors must be handled.
+
+### Subtasks:
+- [ ] Pipeline (strict order):
+  ```
+  GlobalErrorHandler
+    → UseStaticFiles
+    → RequestLogger (log every request)
+    → UseWhen(?debug=true → add debug header)
+    → AuthorizationChecker (X-API-KEY check)
+    → Endpoints
+  ```
+- [ ] Endpoints:
+  - `GET /` → Return `wwwroot/index.html` or `“UAV Inventory API v1”`
+  - `GET /inventory` → Return a fixed list: `[“TB2”, ‘Akıncı’, “SIHA”]` (as JSON)
+  - `GET /inventory/{vehicle:kinetic-system}` → Return details for the specified vehicle (mock data is sufficient)
+  - `GET /inventory/{id:int:min(1)}` → Search by ID, accept the `[FromQuery] bool? detailed` parameter
+  - `GET /detonate` → Throw an exception; GlobalErrorHandler must catch it
+- [ ] The entire page’s pipeline must be functional:
+  - Request without `X-API-KEY` → `401`
+  - Invalid route → `404` (customize with MapFallback)
+  - Exception → `500 JSON`
+  - Static file → direct service
+
+> **Final Test:** Create a Postman collection and run each scenario. Monitor the console logs to see which middleware is triggered and when.
+
+---
+
+## 📊 Scorecard (For Self-Assessment)
+
+| Task | Topic | Difficulty |
+|------|------|--------|
+| Task 1 | Getting Started + HTTP | ⭐⭐ |
+| Task 2 | Middleware Pipeline | ⭐⭐⭐ |
+| Task 3 | Routing + Constraints | ⭐⭐⭐⭐ |
+| Task 4 | Error Handling + Static Files | ⭐⭐⭐ |
+| Task 5 | Integration of All Topics | ⭐⭐⭐⭐⭐ |

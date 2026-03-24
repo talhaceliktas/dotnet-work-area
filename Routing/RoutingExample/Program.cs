@@ -43,8 +43,17 @@ app.Map("cities/{cityId:guid}", async (HttpContext context, Guid cityId) =>
     await context.Response.WriteAsync($"City Information - {cityId}");
 });
 
+
+app.Map("sales-report/{year:int:min(1900)}/{month:regex(^apr|jul|oct|jan$)}",
+    async (HttpContext context, int year, string month) => {
+
+
+        await context.Response.WriteAsync($"Sales Report - {year} - {month}");
+});
+
+
 app.MapFallback(async (HttpContext context) => {
-    await context.Response.WriteAsync($"Request recieved from {context.Request.Path}");
+    await context.Response.WriteAsync($"No route matched at {context.Request.Path}");
 });
 
 app.Run();

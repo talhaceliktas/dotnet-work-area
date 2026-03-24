@@ -21,8 +21,8 @@ app.UseWhen((HttpContext) =>
     {
         app.Use(async (HttpContext context, RequestDelegate next) =>
         {
+            context.Response.Headers["X-Debug-Mode"] = "aktif";
             await next(context);
-            await context.Response.WriteAsync("\nDEBUG MODU");
         });
     });
 

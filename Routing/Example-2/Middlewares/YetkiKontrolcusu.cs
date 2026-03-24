@@ -5,6 +5,7 @@
         public async Task InvokeAsync(HttpContext context, RequestDelegate next) {
             if(!context.Request.Headers.ContainsKey("X-API-KEY")) {
                 context.Response.StatusCode = 401;
+                await context.Response.WriteAsync("Yetkisiz erişim: X-API-KEY header'ı eksik.");
                 return;
             }
 

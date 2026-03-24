@@ -20,12 +20,12 @@ app.Map("employee/profile/{employeeName=Scott}", async (HttpContext context, str
 
 
 // Eg: products/details/{id}
-app.Map("product/details/{id:int?}", (HttpContext context, int? id) =>
+app.Map("product/details/{id:int?}", async (HttpContext context, int? id) =>
 {
     if(id.HasValue)
-        context.Response.WriteAsync($"Product details of ID:{id}");
+        await context.Response.WriteAsync($"Product details of ID:{id}");
     else
-        context.Response.WriteAsync($"Please provide product id!");
+        await context.Response.WriteAsync($"Please provide product id!");
 });
 
 
@@ -36,6 +36,10 @@ app.Map("daily-digest-report/{reportDate:datetime}", async (HttpContext context,
 });
 
 
+app.Map("cities/{cityId:guid}", async (HttpContext context, Guid cityId) =>
+{
+    await context.Response.WriteAsync($"City Information - {cityId}");
+});
 
 app.MapFallback(async (HttpContext context) => {
     await context.Response.WriteAsync($"Request recieved from {context.Request.Path}");

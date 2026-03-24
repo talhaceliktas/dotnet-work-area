@@ -20,11 +20,14 @@ app.Map("employee/profile/{employeeName=Scott}", async (HttpContext context, str
 
 
 // Eg: products/details/{id}
-app.Map("product/details/{id=1}", (HttpContext context, int id) =>
+app.Map("product/details/{id?}", (HttpContext context, int? id) =>
 {
-    context.Response.WriteAsync($"Product details - {id}");
+    if(id.HasValue)
+        context.Response.WriteAsync($"Product details of ID:{id}");
+    else
+        context.Response.WriteAsync($"Please provide product id!");
 });
-
+ 
 
 
 app.MapFallback(async (HttpContext context) => {

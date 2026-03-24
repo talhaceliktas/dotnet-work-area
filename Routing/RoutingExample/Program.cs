@@ -14,7 +14,7 @@ app.Map("files/{filename}.{extension}", async (HttpContext context, string exten
 
 // Eg: employee/profile/{employeeName}
 
-app.Map("employee/profile/{employeeName}", async (HttpContext context, string employeeName) => {
+app.Map("employee/profile/{employeeName=Scott}", async (HttpContext context, string employeeName) => {
     await context.Response.WriteAsync($"Hello {employeeName}");
 });
 

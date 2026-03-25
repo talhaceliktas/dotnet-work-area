@@ -1,9 +1,14 @@
+using Example_2.Constraints;
 using Example_2.Middlewares;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<YetkiKontrolcusu>();
+builder.Services.AddRouting((options) =>
+{
+    options.ConstraintMap.Add("kinsystem", typeof(KartalConstraint));
+});
 
 var app = builder.Build();
 
@@ -72,6 +77,13 @@ app.MapGet("dosyalar/{**yol}", async (HttpContext context, string yol) =>
 {
 
 });
+
+
+app.MapGet("envanter/{arac:kinsystem}", async (HttpContext) =>
+{
+
+});
+
 
 
 

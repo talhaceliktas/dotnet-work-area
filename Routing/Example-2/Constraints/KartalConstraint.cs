@@ -1,4 +1,6 @@
-﻿namespace Example_2.Constraints
+﻿using Example_2.Data;
+
+namespace Example_2.Constraints
 {
     public class KartalConstraint : IRouteConstraint
     {
@@ -9,12 +11,10 @@
         RouteValueDictionary values,
         RouteDirection routeDirection)
         {
-            string[] list = ["kartal", "siha", "akinci"];
 
             string value = values[routeKey]?.ToString() ?? "";
 
-            return list.Contains(value);
-
+            return AracData.Araclar.Exists(x=> x.name == value);
             
         }
 

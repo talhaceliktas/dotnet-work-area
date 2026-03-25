@@ -1,4 +1,5 @@
 using Example_2.Constraints;
+using Example_2.Data;
 using Example_2.Middlewares;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
@@ -99,13 +100,7 @@ app.MapGet("envanter/{arac:kinsystem?}", async (HttpContext context, string? ara
     if(!string.IsNullOrWhiteSpace(arac))
         await context.Response.WriteAsJsonAsync(new {arac});
     else
-        await context.Response.WriteAsJsonAsync(new { 
-            TumAraclar = new[] {
-                "kartal",
-                "siha",
-                "akinci"
-            }
-    });
+        await context.Response.WriteAsJsonAsync(AracData.Araclar);
 });
 
 

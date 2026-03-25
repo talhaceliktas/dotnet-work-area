@@ -26,7 +26,7 @@
                 context.Response.StatusCode = 500;
                 await context.Response.WriteAsJsonAsync(new
                 {
-                    hata = "Sunucu patladı",
+                    hata = ex.Message,
                     zaman = DateTimeOffset.Now.ToUnixTimeSeconds()
 
                 });

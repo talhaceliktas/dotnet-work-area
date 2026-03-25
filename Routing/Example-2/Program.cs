@@ -12,6 +12,8 @@ builder.Services.AddRouting((options) =>
 
 var app = builder.Build();
 
+app.UseGlobalErrorHandler();
+
 app.UseIstekGunlukcusu();
 
 app.UseWhen((HttpContext) =>
@@ -83,6 +85,10 @@ app.MapGet("envanter/{arac:kinsystem}", async (HttpContext context, string arac)
     await context.Response.WriteAsync($"Araç: {arac}");
 });
 
+app.MapGet("patlat", async () =>
+{
+    throw new Exception("Test Patlaması");
+});
 
 
 

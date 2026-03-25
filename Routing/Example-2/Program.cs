@@ -36,6 +36,7 @@ app.UseWhen((HttpContext) =>
 
 app.UseYetkiKontrolcusu();
 
+app.UseStaticFiles();
 
 
 app.MapGet("saglik", async (HttpContext context) =>

@@ -4,7 +4,7 @@ using Example_2.Middlewares;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.Extensions.FileProviders;
 
-var builder = WebApplication.CreateBuilder();
+var builder = WebApplication.CreateBuilder(args);
 
 builder.Services.AddTransient<YetkiKontrolcusu>();
 builder.Services.AddRouting((options) =>
@@ -47,8 +47,9 @@ app.UseStaticFiles(new StaticFileOptions()
     RequestPath = "/publicassets"
 });
 
-app.UseYetkiKontrolcusu();
+app.UseRouting();
 
+app.UseYetkiKontrolcusu();
 
 
 app.MapGet("saglik", async (HttpContext context) =>
@@ -113,11 +114,19 @@ app.MapGet("envanter/{id:int:min(1)}", async (HttpContext context, int id, [From
 
 });
 
-
-
 app.MapGet("patlat", async () =>
 {
     throw new Exception("Test Patlaması");
+});
+
+app.MapFallback(async(HttpContext context) => {
+    context.Response.StatusCode = 404;
+
+    await context.Response.WriteAsJsonAsync(new
+    {
+        status = "Failed",
+        message = "Unhandled Route"
+    });
 });
 
 

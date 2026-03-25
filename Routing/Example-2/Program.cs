@@ -16,6 +16,18 @@ var app = builder.Build();
 
 app.UseGlobalErrorHandler();
 
+app.UseDefaultFiles();
+
+app.UseStaticFiles();
+
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "PublicAssets")),
+    RequestPath = "/publicassets"
+});
+
+
 app.UseIstekGunlukcusu();
 
 app.UseWhen((HttpContext) =>
@@ -36,16 +48,6 @@ app.UseWhen((HttpContext) =>
         });
     });
 
-app.UseDefaultFiles();
-
-app.UseStaticFiles();
-
-app.UseStaticFiles(new StaticFileOptions()
-{
-    FileProvider = new PhysicalFileProvider(
-        Path.Combine(builder.Environment.ContentRootPath, "PublicAssets")),
-    RequestPath = "/publicassets"
-});
 
 app.UseRouting();
 
@@ -95,7 +97,7 @@ app.MapGet("dosyalar/{*yol}", async (HttpContext context, string yol) =>
 
 
 
-app.MapGet("envanter", async (HttpContext context, string? arac) =>
+app.MapGet("envanter", async (HttpContext context) =>
 {
         await context.Response.WriteAsJsonAsync(AracData.Araclar);
 });

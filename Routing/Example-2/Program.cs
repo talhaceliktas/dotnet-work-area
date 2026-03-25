@@ -92,6 +92,8 @@ app.MapGet("dosyalar/{*yol}", async (HttpContext context, string yol) =>
 });
 
 
+
+
 app.MapGet("envanter/{arac:kinsystem?}", async (HttpContext context, string? arac) =>
 {
     if(!string.IsNullOrWhiteSpace(arac))
@@ -105,6 +107,7 @@ app.MapGet("envanter/{arac:kinsystem?}", async (HttpContext context, string? ara
             }
     });
 });
+
 
 app.MapGet("patlat", async () =>
 {

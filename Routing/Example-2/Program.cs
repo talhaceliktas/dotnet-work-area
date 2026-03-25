@@ -1,8 +1,9 @@
 using Example_2.Constraints;
 using Example_2.Middlewares;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.Extensions.FileProviders;
 
-var builder = WebApplication.CreateBuilder(args);
+var builder = WebApplication.CreateBuilder();
 
 builder.Services.AddTransient<YetkiKontrolcusu>();
 builder.Services.AddRouting((options) =>
@@ -37,6 +38,13 @@ app.UseWhen((HttpContext) =>
 app.UseYetkiKontrolcusu();
 
 app.UseStaticFiles();
+
+app.UseStaticFiles(new StaticFileOptions()
+{
+    FileProvider = new PhysicalFileProvider(
+        Path.Combine(builder.Environment.ContentRootPath, "PublicAssets")),
+    RequestPath = "/publicassets"
+});
 
 
 app.MapGet("saglik", async (HttpContext context) =>

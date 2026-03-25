@@ -35,8 +35,6 @@ app.UseWhen((HttpContext) =>
         });
     });
 
-app.UseYetkiKontrolcusu();
-
 app.UseStaticFiles();
 
 app.UseStaticFiles(new StaticFileOptions()
@@ -45,6 +43,9 @@ app.UseStaticFiles(new StaticFileOptions()
         Path.Combine(builder.Environment.ContentRootPath, "PublicAssets")),
     RequestPath = "/publicassets"
 });
+
+app.UseYetkiKontrolcusu();
+
 
 
 app.MapGet("saglik", async (HttpContext context) =>

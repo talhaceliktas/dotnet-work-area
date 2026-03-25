@@ -1,4 +1,6 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using ControllersExample.Models;
+using Microsoft.AspNetCore.Mvc;
+using System.Text.Json.Serialization;
 
 namespace ControllersExample.Controllers 
 {
@@ -19,9 +21,20 @@ namespace ControllersExample.Controllers
         }
 
         [Route("person")]
-        public ContentResult About()
+        public JsonResult About()
         {
-            return Content("{isim: \"talha\"}", "application/json");
+            Person person = new Person() {
+                Id = Guid.NewGuid(),
+                FirstName = "Talha",
+                LastName = "Celiktas",
+                Age = 22
+            };
+
+            //return Content("{isim: \"talha\"}", "application/json");
+
+            //return new JsonResult(person);
+
+            return Json(person);
         }
 
         [Route("contact")]

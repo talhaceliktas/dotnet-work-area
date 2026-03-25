@@ -35,6 +35,8 @@ app.UseWhen((HttpContext) =>
         });
     });
 
+app.UseDefaultFiles();
+
 app.UseStaticFiles();
 
 app.UseStaticFiles(new StaticFileOptions()
@@ -90,9 +92,18 @@ app.MapGet("dosyalar/{*yol}", async (HttpContext context, string yol) =>
 });
 
 
-app.MapGet("envanter/{arac:kinsystem}", async (HttpContext context, string arac) =>
+app.MapGet("envanter/{arac:kinsystem?}", async (HttpContext context, string? arac) =>
 {
-    await context.Response.WriteAsync($"Araç: {arac}");
+    if(!string.IsNullOrWhiteSpace(arac))
+        await context.Response.WriteAsJsonAsync(new {arac});
+    else
+        await context.Response.WriteAsJsonAsync(new { 
+            TumAraclar = new[] {
+                "kartal",
+                "siha",
+                "akinci"
+            }
+    });
 });
 
 app.MapGet("patlat", async () =>

@@ -6,8 +6,12 @@ namespace ControllersExample.Controllers
     {
         [Route("home")]
         [Route("/")]
-        public string Index() {
-            return "Hello from Index";
+        public ContentResult Index() {
+            return new ContentResult()
+            {
+                ContentType = "text/plain",
+                Content = "Hello from Index"
+            };
         }
 
         [Route("about")]
@@ -22,7 +26,7 @@ namespace ControllersExample.Controllers
             return "Hello from Contact";
         }
 
-        [Route("product/{id}")]
+        [Route("product/{id:regex(\\d)}")]
         public string Product(int id)
         {
             return $"Hello from products {id}";

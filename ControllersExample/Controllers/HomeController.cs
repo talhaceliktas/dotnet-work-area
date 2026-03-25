@@ -2,16 +2,20 @@
 
 namespace ControllersExample.Controllers 
 {
-    public class HomeController
+    public class HomeController : Microsoft.AspNetCore.Mvc.Controller
     {
         [Route("home")]
         [Route("/")]
         public ContentResult Index() {
-            return new ContentResult()
-            {
-                ContentType = "text/plain",
-                Content = "Hello from Index"
-            };
+            //return new ContentResult()
+            //{
+            //    ContentType = "text/plain",
+            //    Content = "Hello from Index"
+            //};
+
+            //return Content("Hello from Index", "text/plain");
+
+            return Content("<h1 style='color:red;'>Hello I'm talha celiktas</h1>", "text/html");
         }
 
         [Route("about")]

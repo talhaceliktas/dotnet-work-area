@@ -1,7 +1,10 @@
 <Solution>
-  <Project Path="Calculator/Calculator.csproj" Id="dbcecf23-c11f-4f6e-8fae-2be9f3777642" />
-  <Project Path="Dictionary/Dictionary.csproj" Id="674ebc2e-6c1b-4c7c-a802-e6e96806ee18" />
-  <Project Path="Example-1/Example-1.csproj" Id="c4c0e6d0-8bb4-43da-88de-05246c94f26a" />
-  <Project Path="Middlewares/Middlewares.csproj" Id="29fa67a0-40cd-41cd-a17b-e8ab9f996701" />
-  <Project Path="UseWhenExample/UseWhenExample.csproj" Id="c70327db-90d8-4f6b-9828-1d6e5b57e1cb" />
+  <Project Path="HTTP-Middleware/Calculator/Calculator.csproj" Id="dbcecf23-c11f-4f6e-8fae-2be9f3777642" />
+  <Project Path="HTTP-Middleware/Dictionary/Dictionary.csproj" Id="674ebc2e-6c1b-4c7c-a802-e6e96806ee18" />
+  <Project Path="HTTP-Middleware/Example-1/Example-1.csproj" Id="c4c0e6d0-8bb4-43da-88de-05246c94f26a" />
+  <Project Path="HTTP-Middleware/Middlewares/Middlewares.csproj" Id="29fa67a0-40cd-41cd-a17b-e8ab9f996701" />
+  <Project Path="HTTP-Middleware/UseWhenExample/UseWhenExample.csproj" Id="c70327db-90d8-4f6b-9828-1d6e5b57e1cb" />
+  <Project Path="Routing/Example-2/Example-2.csproj" Id="81b5b187-8ce8-4230-84ea-67858adf9c0d" />
+  <Project Path="Routing/RoutingExample/RoutingExample.csproj" Id="ed338fae-a350-4fa8-87c8-a9cd0cd0c5c2" />
+  <Project Path="Routing/StaticFilesExample/StaticFilesExample.csproj" Id="ddaf6e72-5f3c-4fdc-a712-8117f5d98c7d" />
 </Solution>

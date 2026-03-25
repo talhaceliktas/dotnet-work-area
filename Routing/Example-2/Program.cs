@@ -51,4 +51,31 @@ app.MapPost("yankilama", async (HttpContext context) => {
 
 });
 
+app.MapGet("urunler/{id:int:min(1)}", async (HttpContext context, int id) =>
+{
+
+
+});
+
+
+app.MapGet("calisanlar/{ad:alpha:length(3,10)}", async (HttpContext context, string ad) =>
+{
+
+});
+
+app.MapGet("raporlar/{yil:int:min(2000)}/{donem:regex(^Q1|Q2|Q3$)}", async (HttpContext context, int yil) =>
+{
+
+});
+
+app.MapGet("dosyalar/{**yol}", async (HttpContext context, string yol) =>
+{
+
+});
+
+
+
+
+
+
 app.Run();

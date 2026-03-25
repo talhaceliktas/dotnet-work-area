@@ -18,10 +18,10 @@ namespace ControllersExample.Controllers
             return Content("<h1 style='color:red;'>Hello I'm talha celiktas</h1>", "text/html");
         }
 
-        [Route("about")]
-        public string About()
+        [Route("person")]
+        public ContentResult About()
         {
-            return "Hello from About";
+            return Content("{isim: \"talha\"}", "application/json");
         }
 
         [Route("contact")]

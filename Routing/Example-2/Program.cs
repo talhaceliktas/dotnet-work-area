@@ -1,4 +1,5 @@
 using Example_2.Middlewares;
+using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -51,10 +52,9 @@ app.MapPost("yankilama", async (HttpContext context) => {
 
 });
 
-app.MapGet("urunler/{id:int:min(1)}", async (HttpContext context, int id) =>
+app.MapGet("urunler/{id:int:min(1)}", async (HttpContext context, int id, [FromQuery] string? kategori) =>
 {
-
-
+    await context.Response.WriteAsync($"ID: {id} - Kategori: {kategori}");
 });
 
 

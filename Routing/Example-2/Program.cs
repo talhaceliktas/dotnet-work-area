@@ -94,14 +94,25 @@ app.MapGet("dosyalar/{*yol}", async (HttpContext context, string yol) =>
 
 
 
-
-app.MapGet("envanter/{arac:kinsystem?}", async (HttpContext context, string? arac) =>
+app.MapGet("envanter", async (HttpContext context, string? arac) =>
 {
-    if(!string.IsNullOrWhiteSpace(arac))
-        await context.Response.WriteAsJsonAsync(new {arac});
-    else
         await context.Response.WriteAsJsonAsync(AracData.Araclar);
 });
+
+app.MapGet("envanter/{arac:kinsystem}", async (HttpContext context, string arac) =>
+{
+        await context.Response.WriteAsJsonAsync(AracData.Araclar.Where(x=>x.name == arac).FirstOrDefault());
+});
+
+app.MapGet("envanter/{id:int:min(1)}", async (HttpContext context, int id, [FromQuery] bool? detayli) =>
+{
+    if (!detayli ?? true)
+        await context.Response.WriteAsJsonAsync(new { AracData.Araclar.Where(x => x.id == id).FirstOrDefault()?.name });
+    else
+        await context.Response.WriteAsJsonAsync(AracData.Araclar.Where(x => x.id == id).FirstOrDefault());
+
+});
+
 
 
 app.MapGet("patlat", async () =>

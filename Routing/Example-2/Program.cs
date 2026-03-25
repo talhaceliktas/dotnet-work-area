@@ -38,7 +38,6 @@ app.UseYetkiKontrolcusu();
 
 app.MapGet("saglik", async (HttpContext context) =>
 {
-    context.Response.StatusCode = 200;
     context.Response.ContentType = "text/plain";
 
     await context.Response.WriteAsync("Sistem ayakta");
@@ -65,23 +64,23 @@ app.MapGet("urunler/{id:int:min(1)}", async (HttpContext context, int id, [FromQ
 
 app.MapGet("calisanlar/{ad:alpha:length(3,10)}", async (HttpContext context, string ad) =>
 {
-
+    await context.Response.WriteAsync($"Çalışan: {ad}");
 });
 
-app.MapGet("raporlar/{yil:int:min(2000)}/{donem:regex(^Q1|Q2|Q3$)}", async (HttpContext context, int yil) =>
+app.MapGet("raporlar/{yil:int:min(2000)}/{donem:regex(^(Q1|Q2|Q3|Q4)$)}", async (HttpContext context, int yil, string donem) =>
 {
-
+    await context.Response.WriteAsync($"Yıl: {yil} - Donem: {donem}");
 });
 
-app.MapGet("dosyalar/{**yol}", async (HttpContext context, string yol) =>
+app.MapGet("dosyalar/{*yol}", async (HttpContext context, string yol) =>
 {
-
+    await context.Response.WriteAsync($"Yol: {yol}");
 });
 
 
-app.MapGet("envanter/{arac:kinsystem}", async (HttpContext) =>
+app.MapGet("envanter/{arac:kinsystem}", async (HttpContext context, string arac) =>
 {
-
+    await context.Response.WriteAsync($"Araç: {arac}");
 });
 
 

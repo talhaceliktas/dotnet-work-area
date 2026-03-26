@@ -45,6 +45,9 @@ namespace IActionResultExample.Controllers
             }
 
             //return new RedirectToActionResult("Books", "Store", new { }); // 302 - Found
+
+            return RedirectToAction("Books", "Store", new {id = bookId });
+
             return new RedirectToActionResult("Books", "Store", new { }, true); // 302 - Moved Permanently
         }
     }

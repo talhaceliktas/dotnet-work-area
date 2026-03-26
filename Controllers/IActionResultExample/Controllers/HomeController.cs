@@ -4,32 +4,47 @@ namespace IActionResultExample.Controllers
 {
     public class HomeController : Controller
     {
-        public ContentResult Index()
+        [Route("book")]
+        public IActionResult Index()
         {
             // bookId should be supllied
             if (!Request.Query.ContainsKey("bookId"))
             {
-                return Content("bookId is not supplied");
+                //Response.StatusCode = 400;
+                //return new BadRequestResult();
+                return BadRequest("bookId is not supplied");
+               
             }
 
             // bookId can't be empty
             if (string.IsNullOrWhiteSpace(Request.Query["bookId"][0]))
             {
-                return Content("bookId can't be null or whitespace");
+                return BadRequest("bookId can't be null or whitespace");
             }
 
             // bookId should be between 1 and 1000
             int bookId = Convert.ToInt32(ControllerContext.HttpContext.Request.Query["bookId"]);
 
             if (bookId <= 0) {
-                return Content("Book id can't be less then or equal zero.");
+                return BadRequest("Book id can't be less then or equal zero.");
             }
 
             if (bookId > 1000)
             {
-                return Content("Book id can't be greater than 1000");
+                //Response.StatusCode = 404;
+
+                //return Content("Book id can't be greater than 1000");
+
+                return NotFound("Book id can't be greater than 1000");
             }
 
+            if (!Convert.ToBoolean(Request.Query["isLoggedIn"]))
+            {
+                //return Unauthorized("User must be logged in");
+                return StatusCode(401, "User must be logged in");
+            }
+
+            return File("/sample.pdf", "application/pdf");
         }
     }
 }

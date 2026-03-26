@@ -44,9 +44,32 @@ namespace ControllersExample.Controllers
         }
 
         [Route("file-download")]
-        public VirtualFileResult FileDownload(int id)
+        public VirtualFileResult FileDownload()
         {
-            return new VirtualFileResult("/test.pdf", "application/pdf");
+            //return new VirtualFileResult("/test.pdf", "application/pdf");
+
+            return File("/test.pdf", "application/pdf");
+        }
+
+        [Route("file-download2")]
+        public PhysicalFileResult FileDownload2()
+        {
+            //return new PhysicalFileResult
+            //    (@"C:\Users\why\Desktop\dotnet-work-area\ControllersExample\OtherPath\deneme.pdf",
+            //    "application/pdf");
+
+            return PhysicalFile(@"C:\Users\why\Desktop\dotnet-work-area\ControllersExample\OtherPath\deneme.pdf",
+                "applicaton/pdf");
+        }
+
+        [Route("file-download3")]
+        public FileContentResult FileDownload3()
+        {
+            byte[] image = System.IO.File.ReadAllBytes(@"C:\Users\why\Desktop\dotnet-work-area\ControllersExample\OtherPath\test.avif");
+
+            //return new FileContentResult(image, "image/avif");
+
+            return File(image, "image/avif");
         }
     }
 }

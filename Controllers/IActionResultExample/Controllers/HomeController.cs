@@ -4,7 +4,7 @@ namespace IActionResultExample.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("book")]
+        [Route("bookstore")]
         public IActionResult Index()
         {
             // bookId should be supllied
@@ -44,7 +44,8 @@ namespace IActionResultExample.Controllers
                 return StatusCode(401, "User must be logged in");
             }
 
-            return File("/sample.pdf", "application/pdf");
+            //return new RedirectToActionResult("Books", "Store", new { }); // 302 - Found
+            return new RedirectToActionResult("Books", "Store", new { }, true); // 302 - Moved Permanently
         }
     }
 }

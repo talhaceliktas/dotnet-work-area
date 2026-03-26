@@ -45,10 +45,23 @@ namespace IActionResultExample.Controllers
             }
 
             //return new RedirectToActionResult("Books", "Store", new { }); // 302 - Found
+            //return RedirectToAction("Books", "Store", new {id = bookId });
 
-            return RedirectToAction("Books", "Store", new {id = bookId });
 
-            return new RedirectToActionResult("Books", "Store", new { }, true); // 302 - Moved Permanently
+            //return new RedirectToActionResult("Books", "Store", new { }, true); // 302 - Moved Permanently
+            //return RedirectToActionPermanent("Books", "Store", new { }); // 302 - Moved Permanently
+
+
+            //return new LocalRedirectResult($"store/books/{bookId}");
+            //return LocalRedirect($"store/books/{bookId}");
+
+            //return new LocalRedirectResult($"store/books/{bookId}", true); // 302
+            //return LocalRedirectPermanent($"store/books/{bookId}");
+
+            //return Redirect($"store/books/{bookId}");
+            return RedirectPermanent($"store/books/{bookId}");
+
+
         }
     }
 }

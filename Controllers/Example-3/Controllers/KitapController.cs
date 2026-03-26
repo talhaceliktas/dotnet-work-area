@@ -27,7 +27,7 @@ namespace Example_3.Controllers
                 return Unauthorized();
             }
 
-            if (!girisYapildi ?? false)
+            if (girisYapildi != true)
             {
                 return StatusCode(403, "Giriş yapılmış ama yetkin yok");
             }

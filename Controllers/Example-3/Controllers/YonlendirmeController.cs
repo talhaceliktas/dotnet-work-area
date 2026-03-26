@@ -21,7 +21,7 @@ namespace Example_3.Controllers
         [Route("local")]
         public IActionResult LocalYonlendir()
         {
-            return LocalRedirect("katalog");
+            return LocalRedirect("/katalog");
         }
 
         [Route("dis")]

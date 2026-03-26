@@ -43,10 +43,10 @@ namespace ControllersExample.Controllers
             return "Hello from Contact";
         }
 
-        [Route("product/{id:regex(\\d)}")]
-        public string Product(int id)
+        [Route("file-download")]
+        public VirtualFileResult FileDownload(int id)
         {
-            return $"Hello from products {id}";
+            return new VirtualFileResult("/test.pdf", "application/pdf");
         }
     }
 }

@@ -4,9 +4,9 @@ namespace IActionResultExample.Controllers
 {
     public class HomeController : Controller
     {
-        [Route("bookstore")]
+        [Route("bookstore/{bookId?}/{isLoggedIn?}")]
         // Url: bookstore?bookId=10&isLoggedIn=true
-        public IActionResult Index(int? bookId, bool? isLoggedIn)
+        public IActionResult Index([FromQuery] int? bookId, [FromRoute] bool? isLoggedIn)
         {
             // bookId should be supllied
             if (!bookId.HasValue)

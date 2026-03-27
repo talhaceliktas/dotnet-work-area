@@ -8,7 +8,7 @@ namespace IActionResultExample.Controllers
         [Route("bookstore/{bookId?}/{isLoggedIn?}")]
         // Url: bookstore?bookId=10&isLoggedIn=true
         public IActionResult Index([FromQuery] int? bookId, [FromRoute] bool? isLoggedIn,
-            Book book)
+            [FromForm] Book book)
         {
             // bookId should be supllied
             if (!bookId.HasValue)

@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ModelBinding.Models;
 
 namespace IActionResultExample.Controllers
 {
@@ -6,7 +7,8 @@ namespace IActionResultExample.Controllers
     {
         [Route("bookstore/{bookId?}/{isLoggedIn?}")]
         // Url: bookstore?bookId=10&isLoggedIn=true
-        public IActionResult Index([FromQuery] int? bookId, [FromRoute] bool? isLoggedIn)
+        public IActionResult Index([FromQuery] int? bookId, [FromRoute] bool? isLoggedIn,
+            Book book)
         {
             // bookId should be supllied
             if (!bookId.HasValue)

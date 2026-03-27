@@ -8,6 +8,17 @@ namespace ModelValidationExample.Controllers
         [HttpPost("register")]
         public IActionResult Index(Person person)
         {
+            if (!ModelState.IsValid)
+            {
+                string errors = string.Join("\n",
+                    ModelState.Values.SelectMany(value => value.Errors)
+                    .Select(err => err.ErrorMessage).ToList()
+                    );
+
+                return BadRequest(errors);
+            }
+
+
             return Content(person.ToString());
         }
     }

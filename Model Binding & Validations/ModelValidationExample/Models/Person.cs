@@ -1,8 +1,12 @@
-﻿namespace ModelValidationExample.Models
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace ModelValidationExample.Models
 {
     public class Person
     {
+        [Required]
         public string? PersonName { get; set; }
+
         public string? Email { get; set; }
         public string? Phone { get; set; }
         public string? Password { get; set; }

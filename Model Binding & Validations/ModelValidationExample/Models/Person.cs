@@ -1,10 +1,13 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System.ComponentModel;
+using System.ComponentModel.DataAnnotations;
 
 namespace ModelValidationExample.Models
 {
     public class Person
     {
-        [Required(ErrorMessage = "Person name can't be null or empty.")]
+        [Required(ErrorMessage = "{0} can't be null or empty.")]
+        [DisplayName("Personel Name")]
+        [StringLength(40, MinimumLength = 5, ErrorMessage = "{0} should be between {2} and {1} characters long.")]
         public string? PersonName { get; set; }
 
         public string? Email { get; set; }

@@ -6,7 +6,8 @@ namespace ModelValidationExample.Controllers
     public class HomeController : Controller
     {
         [HttpPost("register")]
-        public IActionResult Index(Person person)
+        public IActionResult Index([Bind(nameof(Person.PersonName), nameof(Person.Email),
+            nameof(Person.Password), nameof(Person.Password))] Person person)
         {
             if (!ModelState.IsValid)
             {

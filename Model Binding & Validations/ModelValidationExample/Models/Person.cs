@@ -34,7 +34,7 @@ namespace ModelValidationExample.Models
         public double? Price { get; set; }
 
 
-        [MinimumYearValidator]
+        [MinimumYearValidator(2005)]
         public DateTime? DateOfBirth { get; set; }
 
         public override string ToString()

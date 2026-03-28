@@ -1,27 +1,42 @@
-﻿using System.ComponentModel.DataAnnotations;
+﻿using System;
+using System.ComponentModel.DataAnnotations;
 
 namespace ModelValidationExample.CustomValidators
 {
     public class MinimumYearValidatorAttribute : ValidationAttribute
     {
-        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+        public int MinimumYear { get; set; } = 2000;
+
+        private const string DefaultErrorMessage = "The minimum allowed year for {0} must be {1} or greater.";
+
+        public MinimumYearValidatorAttribute() { }
+
+        public MinimumYearValidatorAttribute(int minimumYear)
         {
-            if(value != null)
-            {
-                DateTime date = (DateTime)value;
-                if(date.Year < 2000)
-                {
-                    return new ValidationResult("Minimum year allowed is 2000");
-                }
-                else
-                {
-                    return ValidationResult.Success;
-                }
-            }
-
-            return null;
-
+            MinimumYear = minimumYear;
         }
 
+        protected override ValidationResult? IsValid(object? value, ValidationContext validationContext)
+        {
+            if (value == null)
+            {
+                return ValidationResult.Success;
+            }
+
+            if (value is DateTime date)
+            {
+                if (date.Year < MinimumYear)
+                {
+                    string messageTemplate = ErrorMessage ?? DefaultErrorMessage;
+                    string formattedMessage = string.Format(messageTemplate, validationContext.DisplayName, MinimumYear);
+
+                    return new ValidationResult(formattedMessage);
+                }
+
+                return ValidationResult.Success;
+            }
+
+            return new ValidationResult("MinimumYearValidator is only available for DateTime types.");
+        }
     }
 }

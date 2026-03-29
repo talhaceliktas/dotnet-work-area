@@ -9,7 +9,8 @@ namespace ModelValidationExample.Controllers
     {
         [HttpPost("register")]
         //[Bind(nameof(Person.PersonName), nameof(Person.Email), nameof(Person.Password), nameof(Person.Password))]
-        public IActionResult Index([ModelBinder(typeof(PersonModelBinder))] Person person)
+        //[ModelBinder(typeof(PersonModelBinder))]
+        public IActionResult Index( Person person)
         {
             if (!ModelState.IsValid)
             {

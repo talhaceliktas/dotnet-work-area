@@ -10,7 +10,7 @@ namespace ModelValidationExample.Controllers
         [HttpPost("register")]
         //[Bind(nameof(Person.PersonName), nameof(Person.Email), nameof(Person.Password), nameof(Person.Password))]
         //[ModelBinder(typeof(PersonModelBinder))]
-        public IActionResult Index( Person person)
+        public IActionResult Index(Person person, [FromHeader(Name = "User-Agent")] string UserAgent)
         {
             if (!ModelState.IsValid)
             {
@@ -23,7 +23,7 @@ namespace ModelValidationExample.Controllers
             }
 
 
-            return Content(person.ToString());
+            return Content($"{person}, {UserAgent}");
         }
     }
 }

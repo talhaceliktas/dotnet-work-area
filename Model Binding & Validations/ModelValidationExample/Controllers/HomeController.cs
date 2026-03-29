@@ -1,13 +1,15 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.ModelBinding;
 using ModelValidationExample.Controllers;
+using ModelValidationExample.CustomModelBinders;
 using ModelValidationExample.Models;
 namespace ModelValidationExample.Controllers
 {
     public class HomeController : Controller
     {
         [HttpPost("register")]
-        public IActionResult Index([Bind(nameof(Person.PersonName), nameof(Person.Email),
-            nameof(Person.Password), nameof(Person.Password))] Person person)
+        //[Bind(nameof(Person.PersonName), nameof(Person.Email), nameof(Person.Password), nameof(Person.Password))]
+        public IActionResult Index([ModelBinder(typeof(PersonModelBinder))] Person person)
         {
             if (!ModelState.IsValid)
             {

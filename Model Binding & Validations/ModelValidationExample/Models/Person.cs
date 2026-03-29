@@ -49,12 +49,13 @@ namespace ModelValidationExample.Models
 
         public override string ToString()
         {
-            return $"Person Object - Person Name: {PersonName}" +
-                   $"Email {Email}" +
-                   $"Email {Phone}" +
-                   $"Email {Password}" +
-                   $"Email {ConfirmPassword}" +
-                   $"Email {Price}";
+            return $"Person Object: \n" +
+                   $"Person Name: {PersonName} \n" +
+                   $"Email: {Email} \n" +
+                   $"Phone: {Phone}  \n" +
+                   $"Password: {Password}  \n" +
+                   $"ConfirmPassword: {ConfirmPassword}  \n" +
+                   $"Price: {Price}   \n";
 
 
         }

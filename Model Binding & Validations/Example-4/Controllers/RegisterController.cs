@@ -4,7 +4,7 @@ using Microsoft.AspNetCore.Mvc;
 namespace Example_4.Controllers
 {
     [ApiController]
-    [Route("api/[controller]")]
+    [Route("api")]
     public class RegisterController : ControllerBase
     {
         [HttpPost("register")]

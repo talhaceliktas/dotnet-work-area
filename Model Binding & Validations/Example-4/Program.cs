@@ -1,7 +1,11 @@
+using Example_4.Binders;
 using Microsoft.AspNetCore.Mvc;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers()
+builder.Services.AddControllers((options) =>
+{
+    options.ModelBinderProviders.Insert(0, new SearchFilterBinderProvider());
+})
     .ConfigureApiBehaviorOptions(options =>
     {
         options.InvalidModelStateResponseFactory = context =>

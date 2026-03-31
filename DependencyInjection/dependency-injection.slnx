@@ -1,4 +1,5 @@
 <Solution>
   <Project Path="DIExample/DIExample.csproj" />
+  <Project Path="ServiceContracts/ServiceContracts.csproj" Id="4c656c4e-4ac5-46a0-b2f7-a5e7b0e5fc01" />
   <Project Path="Services/Services.csproj" />
 </Solution>

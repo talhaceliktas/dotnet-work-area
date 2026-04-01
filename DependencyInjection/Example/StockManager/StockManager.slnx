@@ -1,3 +1,9 @@
 <Solution>
+  <Folder Name="/Çözüm Öğeleri/">
+    <File Path="Task.md" />
+  </Folder>
+  <Project Path="../Entities/Entities.csproj" />
+  <Project Path="../ServiceContracts/ServiceContracts.csproj" />
+  <Project Path="../Services/Services.csproj" />
   <Project Path="StockManager.csproj" />
 </Solution>

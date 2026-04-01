@@ -24,12 +24,17 @@ namespace Services
 
         public bool IsInStock(Guid productId)
         {
-            throw new NotImplementedException();
+            return _inMemoryProducts.Any(x=> x.Id == productId && x.StockQuantity > 0);
         }
 
         public bool UpdateStock(Guid productId, int quantity)
         {
-            throw new NotImplementedException();
+            Product? product = _inMemoryProducts.FirstOrDefault(x => x.Id == productId);
+            if (product != null) {
+                product.StockQuantity = quantity;
+                return true;
+            }
+            return false;
         }
     }
 }

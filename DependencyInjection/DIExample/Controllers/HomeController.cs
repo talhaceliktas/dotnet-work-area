@@ -8,9 +8,9 @@ namespace DIExample.Controllers
     {
         private readonly ICitiesService _citiesService;
 
-        public HomeController()
+        public HomeController(ICitiesService citiesService)
         {
-            _citiesService = null;
+            _citiesService = citiesService;
         }
 
         [Route("/")]

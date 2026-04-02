@@ -5,7 +5,7 @@ namespace StockManager.Controllers
 {
     public class ProductsController : Controller
     {
-        private IProductStockService _productStockService;
+        private readonly IProductStockService _productStockService;
 
         public ProductsController(IProductStockService productStockService)
         {
@@ -15,7 +15,7 @@ namespace StockManager.Controllers
         [HttpGet("/")]
         public IActionResult Index()
         {
-            return Ok(_productStockService.GetAllProducts());
+            return View(_productStockService.GetAllProducts());
         }
 
         [HttpGet("detail/{id}")]

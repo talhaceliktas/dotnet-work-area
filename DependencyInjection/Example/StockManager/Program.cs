@@ -2,7 +2,7 @@ using ServiceContracts;
 using Services;
 
 var builder = WebApplication.CreateBuilder(args);
-builder.Services.AddControllers();
+builder.Services.AddControllersWithViews();
 builder.Services.AddScoped<IProductStockService, ProductStockService>();
 var app = builder.Build();
 

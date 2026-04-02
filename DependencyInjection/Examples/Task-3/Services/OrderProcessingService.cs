@@ -13,7 +13,7 @@ namespace Services
         public int ProcessPendingOrders()
         {
             using (var scope = _serviceScopeFactory.CreateScope()) {
-                var orderRepo = scope.ServiceProvider.GetRequiredService<OrderRepository>();
+                var orderRepo = scope.ServiceProvider.GetRequiredService<IOrderRepository>();
                 return orderRepo.RandomNumber;
             }
         }

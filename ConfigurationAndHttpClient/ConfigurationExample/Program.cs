@@ -8,7 +8,11 @@ app.UseRouting();
 
 app.MapGet("/", async (HttpContext context) =>
 {
-    await context.Response.WriteAsync(app.Configuration["MyKey"] ?? "");
+    await context.Response.WriteAsync(app.Configuration["MyKey"] + "\n" ?? "");
+
+    await context.Response.WriteAsync(app.Configuration.GetValue<string>("MyKey", "Test") + "\n");
+
+    await context.Response.WriteAsync(app.Configuration.GetValue<int>("X", 10) + "\n");
 });
 
 

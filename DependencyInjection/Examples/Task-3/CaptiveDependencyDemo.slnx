@@ -1,3 +1,5 @@
 <Solution>
   <Project Path="CaptiveDependencyDemo/CaptiveDependencyDemo.csproj" />
+  <Project Path="ServiceContracts/ServiceContracts.csproj" Id="a7a2986c-263d-42a0-9427-e52a53482cde" />
+  <Project Path="Services/Services.csproj" Id="13a83711-f0eb-43fb-907e-97727fb09b62" />
 </Solution>

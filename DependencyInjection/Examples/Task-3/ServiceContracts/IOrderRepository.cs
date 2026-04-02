@@ -1,6 +1,6 @@
 ﻿namespace ServiceContracts
 {
-    public class IOrderRepository
+    public interface IOrderRepository
     {
 
     }

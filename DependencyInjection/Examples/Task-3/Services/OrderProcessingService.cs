@@ -2,7 +2,15 @@
 
 namespace Services
 {
-    internal class OrderProcessingService : IOrderProcessingService
+    public class OrderProcessingService : IOrderProcessingService
     {
+        public OrderProcessingService(IOrderRepository orderRepository) {
+        
+        }
+        public void ProcessPendingOrders()
+        {
+
+        }
+
     }
 }

@@ -1,0 +1,10 @@
+﻿@model List<Entities.Product>
+
+<h1>Ürün Listesi</h1>
+
+<ul>
+    @foreach (var urun in Model)
+    {
+        <li>@urun.Name - Stok: @urun.StockQuantity</li>
+    }
+</ul>

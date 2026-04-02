@@ -1,3 +1,6 @@
 <Solution>
+  <Project Path="Entities/Entities.csproj" Id="f9fed4b8-bb6e-4c0b-9954-8f27be64e60d" />
+  <Project Path="RealWeatherService/Services.csproj" Id="5e789c29-4dba-426e-987c-ff7c69f31439" />
+  <Project Path="ServiceContracts/ServiceContracts.csproj" Id="a6b37231-d64b-4e2f-a562-e1678365ace1" />
   <Project Path="WeatherWithCaching/WeatherWithCaching.csproj" />
 </Solution>

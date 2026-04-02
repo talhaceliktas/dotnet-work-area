@@ -2,7 +2,7 @@
 
 namespace Services
 {
-    internal class ScopedOperation : IScopedOperation
+    public class ScopedOperation : IScopedOperation
     {
         private readonly Guid _operationId;
 

@@ -2,7 +2,7 @@
 
 namespace Services
 {
-    internal class SingletonOperation : ISingletonOperation
+    public class SingletonOperation : ISingletonOperation
     {
         private readonly Guid _operationId;
 

@@ -1,5 +1,4 @@
 <Solution>
-  <Project Path="Example-4/Example-4.csproj" Id="2914519f-2e9f-40d3-a16f-b049ee4353b4" />
   <Project Path="Model Binding/ModelBinding.csproj" />
   <Project Path="ModelValidationExample/ModelValidationExample.csproj" Id="bad3f6da-5fe1-4eb9-a5e9-cb0332fc8586" />
 </Solution>

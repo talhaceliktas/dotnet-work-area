@@ -1,5 +1,4 @@
 <Solution>
   <Project Path="ControllersExample/ControllersExample.csproj" Id="608626ba-e839-4e3a-a1c9-c9284000bfec" />
-  <Project Path="Example-3/Example-3.csproj" />
   <Project Path="IActionResultExample/IActionResultExample.csproj" Id="4d33da39-68c6-476d-ac6d-e2a8c3e6a7d7" />
 </Solution>

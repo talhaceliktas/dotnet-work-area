@@ -2,6 +2,6 @@
 {
     public interface ISingletonOperation
     {
-        Guid GetOperationId();
+        Guid OperationId { get; }
     }
 }

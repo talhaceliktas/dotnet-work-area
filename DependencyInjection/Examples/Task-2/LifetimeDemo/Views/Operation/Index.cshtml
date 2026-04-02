@@ -5,7 +5,10 @@
                 Operation Name
             </th>
             <th>
-                Guid
+                Service 1
+            </th>
+            <th>
+                Service 2
             </th>
         </tr>
         <tr>
@@ -13,7 +16,10 @@
                 TransientOperation
             </td>
             <td>
-                @ViewBag.TransientOperation
+                @ViewBag.TransientOperation1
+            </td>
+            <td>
+                @ViewBag.TransientOperation2
             </td>
         </tr>
         <tr>
@@ -21,7 +27,10 @@
                 ScopedOperation
             </td>
             <td>
-                @ViewBag.ScopedOperation
+                @ViewBag.ScopedOperation1
+            </td>
+            <td>
+                @ViewBag.ScopedOperation2
             </td>
         </tr>
         <tr>
@@ -29,8 +38,17 @@
                 SingletonOperation
             </td>
             <td>
-                @ViewBag.SingletonOperation
+                @ViewBag.SingletonOperation1
+            </td>
+            <td>
+                @ViewBag.SingletonOperation2
             </td>
         </tr>
     </table>
+</div>
+
+<div>
+    <p>🔴 Transient: Her refresh'te değişir — her injection'da yeni instance</p>
+    <p>🟡 Scoped: Aynı request içinde sabit, yeni request'te değişir</p>
+    <p>🟢 Singleton: Uygulama kapanana kadar hiç değişmez</p>
 </div>

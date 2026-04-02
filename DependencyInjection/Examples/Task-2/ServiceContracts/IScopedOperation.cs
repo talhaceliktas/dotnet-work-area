@@ -2,6 +2,6 @@
 {
     public interface IScopedOperation
     {
-        Guid GetOperationId();
+        Guid OperationId { get; }
     }
 }

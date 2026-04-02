@@ -14,8 +14,8 @@ namespace ConfigurationExample.Controllers
         [HttpGet("/")]
         public IActionResult Index()
         {
-            ViewBag.MyKey = _configuration.GetValue<string>("MyKey", "Test");
-            ViewBag.MyAPIKey = _configuration.GetValue<string>("MyApiKey", "AAADDSSSS22222");
+            ViewBag.ClientID = _configuration.GetValue<string>("WeatherAPI:ClientID", "Default ID");
+            ViewBag.ClientSecret = _configuration.GetValue<string>("WeatherAPI:ClientSecret", "Default Secret");
 
             return View();
         }

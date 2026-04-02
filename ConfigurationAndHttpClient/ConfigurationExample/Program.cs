@@ -6,14 +6,14 @@ app.UseStaticFiles();
 app.UseRouting();
 
 
-app.MapGet("/config", async (HttpContext context) =>
-{
-    await context.Response.WriteAsync(app.Configuration["MyKey"] + "\n" ?? "");
+//app.MapGet("/config", async (HttpContext context) =>
+//{
+//    await context.Response.WriteAsync(app.Configuration["MyKey"] + "\n" ?? "");
 
-    await context.Response.WriteAsync(app.Configuration.GetValue<string>("MyKey", "Test") + "\n");
+//    await context.Response.WriteAsync(app.Configuration.GetValue<string>("MyKey", "Test") + "\n");
 
-    await context.Response.WriteAsync(app.Configuration.GetValue<int>("X", 10) + "\n");
-});
+//    await context.Response.WriteAsync(app.Configuration.GetValue<int>("X", 10) + "\n");
+//});
 
 
 app.MapControllers();

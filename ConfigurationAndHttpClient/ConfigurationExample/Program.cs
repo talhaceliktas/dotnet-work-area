@@ -6,7 +6,7 @@ app.UseStaticFiles();
 app.UseRouting();
 
 
-app.MapGet("/", async (HttpContext context) =>
+app.MapGet("/config", async (HttpContext context) =>
 {
     await context.Response.WriteAsync(app.Configuration["MyKey"] + "\n" ?? "");
 

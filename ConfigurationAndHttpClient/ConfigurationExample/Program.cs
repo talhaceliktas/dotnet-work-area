@@ -8,7 +8,7 @@ var app = builder.Build();
 app.UseStaticFiles();
 app.UseRouting();
 
-
+    
 //app.MapGet("/config", async (HttpContext context) =>
 //{
 //    await context.Response.WriteAsync(app.Configuration["MyKey"] + "\n" ?? "");

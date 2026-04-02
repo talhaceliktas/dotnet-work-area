@@ -9,5 +9,11 @@ namespace EnvironmentsExample.Controllers
         {
             return View();
         }
+
+        [HttpGet("/some-route")]
+        public IActionResult Other()
+        {
+            throw new NotImplementedException();
+        }
     }
 }

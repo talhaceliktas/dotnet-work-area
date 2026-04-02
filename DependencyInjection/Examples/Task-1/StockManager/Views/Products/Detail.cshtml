@@ -1,0 +1,6 @@
+﻿@model Entities.Product
+
+<li>@Model.Name - Stok: @Model.StockQuantity</li>
+<li>@Model.Name</li>
+<li>Stok Durumu: @(Model.StockQuantity > 0 ? "✅ Stokta Var" : "❌ Stokta Yok")</li>
+<li>Miktar: @Model.StockQuantity</li>

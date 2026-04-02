@@ -1,0 +1,5 @@
+<Solution>
+  <Project Path="LifetimeDemo/LifetimeDemo.csproj" />
+  <Project Path="ServiceContracts/ServiceContracts.csproj" Id="db122f3b-467a-4a5e-98cb-51c4cc907908" />
+  <Project Path="Services/Services.csproj" Id="c56b062d-f5ce-4973-ba27-09593e84a1af" />
+</Solution>

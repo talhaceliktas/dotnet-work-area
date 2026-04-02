@@ -1,0 +1,27 @@
+﻿@model IEnumerable<string>
+@inject ICitiesService citiesServiceInView;
+@{
+    ViewBag.Title = "Home";
+}
+
+<h1>Home</h1>
+@{
+    List<string> citiesFromView = citiesServiceInView.GetCities();
+}
+<ul class="list">
+    @foreach(string city in Model)
+    {
+        <li>@city</li>
+    }
+</ul>
+<ul class="list">
+    @foreach (string city in citiesFromView)
+    {
+        <li>@city</li>
+    }
+</ul>
+
+<div>@ViewBag.InstanceId_CitiesService_1</div>
+<div>@ViewBag.InstanceId_CitiesService_2</div>
+<div>@ViewBag.InstanceId_CitiesService_3</div>
+<div>@ViewBag.InstanceId_CitiesService_4</div>

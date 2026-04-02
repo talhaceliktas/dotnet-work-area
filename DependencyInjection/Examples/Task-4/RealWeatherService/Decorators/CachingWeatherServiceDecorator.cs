@@ -3,7 +3,7 @@ using Microsoft.Extensions.Caching.Memory;
 using ServiceContracts;
 namespace Services.Decorators
 {
-    public class CachingWeatherServiceDecorator
+    public class CachingWeatherServiceDecorator : IWeatherService
     {
         private readonly IWeatherService _inner;
         private readonly IMemoryCache _cache;

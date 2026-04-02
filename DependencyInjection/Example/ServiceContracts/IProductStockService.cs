@@ -6,7 +6,7 @@ namespace ServiceContracts
     {
         List<Product> GetAllProducts();
 
-        bool IsInStock(int productId);
+        Product? GetProduct(int productId);
 
         bool UpdateStock(int productId, int quantity);
     }

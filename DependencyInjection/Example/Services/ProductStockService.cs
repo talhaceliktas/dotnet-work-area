@@ -22,9 +22,9 @@ namespace Services
             return _inMemoryProducts;
         }
 
-        public bool IsInStock(int productId)
+        public Product? GetProduct(int productId)
         {
-            return _inMemoryProducts.Any(x=> x.Id == productId && x.StockQuantity > 0);
+            return _inMemoryProducts.FirstOrDefault(x=> x.Id == productId);
         }
 
         public bool UpdateStock(int productId, int quantity)

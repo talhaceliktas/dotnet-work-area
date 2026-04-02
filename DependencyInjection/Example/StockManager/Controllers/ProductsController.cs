@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Entities;
+using Microsoft.AspNetCore.Mvc;
 using ServiceContracts;
 
 namespace StockManager.Controllers
@@ -21,7 +22,12 @@ namespace StockManager.Controllers
         [HttpGet("detail/{id}")]
         public IActionResult Detail([FromRoute] int id)
         {
-            return Ok(_productStockService.IsInStock(id));
+            Product? product = _productStockService.GetProduct(id);
+
+            if (product != null) {
+                return View(product);
+            }
+            return NotFound();
         }
     }
 }

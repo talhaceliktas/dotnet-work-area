@@ -2,6 +2,6 @@
 {
     public interface IOrderProcessingService
     {
-        void ProcessPendingOrders();
+        int ProcessPendingOrders();
     }
 }

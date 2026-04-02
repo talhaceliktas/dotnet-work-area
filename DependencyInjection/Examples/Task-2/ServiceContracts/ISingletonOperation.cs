@@ -1,7 +1,4 @@
 ﻿namespace ServiceContracts
 {
-    public interface ISingletonOperation
-    {
-        Guid OperationId { get; }
-    }
+    public interface ISingletonOperation : IOperation { }
 }

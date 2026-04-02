@@ -1,7 +1,4 @@
 ﻿namespace ServiceContracts
 {
-    public interface ITransientOperation
-    {
-        Guid OperationId { get; }
-    }
+    public interface ITransientOperation : IOperation { }
 }

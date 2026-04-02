@@ -1,7 +1,4 @@
 ﻿namespace ServiceContracts
 {
-    public interface IScopedOperation
-    {
-        Guid OperationId { get; }
-    }
+    public interface IScopedOperation : IOperation { }
 }

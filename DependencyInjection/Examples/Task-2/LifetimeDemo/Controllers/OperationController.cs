@@ -20,5 +20,15 @@ namespace LifetimeDemo.Controllers
         
         }
 
+        [HttpGet("/")]
+        public IActionResult Index()
+        {
+            ViewBag.TransientOperation = _transientOperation.GetOperationId();
+            ViewBag.ScopedOperation = _scopedOperation.GetOperationId();
+            ViewBag.SingletonOperation = _singletonOperation.GetOperationId();
+
+            return View();
+        }
+
     }
 }

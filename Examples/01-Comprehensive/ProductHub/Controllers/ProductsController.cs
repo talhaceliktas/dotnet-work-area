@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using ProductHub.Models;
 
 namespace ProductHub.Controllers
 {
@@ -8,13 +9,19 @@ namespace ProductHub.Controllers
         [HttpGet("products")]
         public IActionResult Index()
         {
-            return View();
+            return Ok(ProductStore.ProductList);
         }
 
         [HttpGet("products/{id:int:min(1)}")]
-        public IActionResult GetProduct([FromRoute] int id)
+        public IActionResult GetProductById([FromRoute] int id)
         {
-            return View();
+            Product? product = ProductStore.ProductList.FirstOrDefault(x => x.Id == id);
+
+            if (product != null) {
+                return Ok(product);
+            }
+            return NotFound();
+
         }
 
         [HttpGet("products/search")]
@@ -24,13 +31,13 @@ namespace ProductHub.Controllers
         }
 
         [HttpPost("products")]
-        public IActionResult AddProduct()
+        public IActionResult CreateProduct()
         {
             return View();
         }
 
         [HttpPost("products/report/{year:int:min(2020)}/{month:regex(^(jan|feb)}")]
-        public IActionResult RegexProduct()
+        public IActionResult GetReportProduct()
         {
             return View();
         }

@@ -27,7 +27,18 @@ namespace ProductHub.Controllers
         [HttpGet("products/search")]
         public IActionResult SearchProduct([FromQuery(Name ="name")] string? keyword)
         {
-            return View();
+            if (keyword == null)
+                return BadRequest();
+
+            List<Product> products = ProductStore.ProductList
+                            .Where(x => x.Name.Contains(keyword, StringComparison.OrdinalIgnoreCase))
+                            .ToList();
+
+            if (products == null) {
+                return NotFound();
+            }
+
+            return Ok(products);
         }
 
         [HttpPost("products")]

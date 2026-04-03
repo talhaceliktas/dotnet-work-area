@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
 using ProductHub.Models;
+using static System.Net.Mime.MediaTypeNames;
 
 namespace ProductHub.Controllers
 {
@@ -53,9 +54,9 @@ namespace ProductHub.Controllers
         }
 
         [HttpPost("products/report/{year:int:min(2020)}/{month:regex(^(jan|feb)}")]
-        public IActionResult GetReportProduct()
+        public IActionResult GetReportProduct(int year, string month)
         {
-            return View();
+            return Ok(new { Year = year, Month = month, ReportedAt = DateTime.Now });
         }
     }
 }

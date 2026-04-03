@@ -5,8 +5,8 @@ namespace StocksApp.Controllers
 {
     public class HomeController : Controller
     {
-        private readonly MyService _myService;
-        public HomeController(MyService myService) {
+        private readonly FinnhubService _myService;
+        public HomeController(FinnhubService myService) {
             _myService = myService;
         }
 

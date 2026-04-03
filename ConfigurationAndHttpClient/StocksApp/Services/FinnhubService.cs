@@ -1,14 +1,15 @@
 ﻿using Microsoft.Extensions.Options;
 using StocksApp.Models;
+using System.Text.Json;
 
 namespace StocksApp.Services
 {
-    public class MyService
+    public class FinnhubService
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly FinnhubOptions _finnhubOptions;
 
-        public MyService(IHttpClientFactory httpClientFactory, IOptions<FinnhubOptions> options)
+        public FinnhubService(IHttpClientFactory httpClientFactory, IOptions<FinnhubOptions> options)
         {
             _httpClientFactory = httpClientFactory;
             _finnhubOptions = options.Value;
@@ -31,6 +32,9 @@ namespace StocksApp.Services
                 StreamReader streamReader = new StreamReader(stream);
 
                 string response = streamReader.ReadToEnd();
+
+                Dictionary<string, object>? dictionary =
+                JsonSerializer.Deserialize<Dictionary<string, object>>(response);
             }
         }
     }

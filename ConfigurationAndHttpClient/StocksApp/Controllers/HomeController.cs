@@ -24,17 +24,17 @@ namespace StocksApp.Controllers
             await _finnhubService.GetStockPriceQuote(currentStockSymbol);
 
             Stock stock = new Stock() {
-                StockSymbol = stockSymbol,
-                CurrentPrice = Convert.ToDouble(responseDictionary?["c"] ?? 0),
-                Change = Convert.ToDouble(responseDictionary?["d"] ?? 0),
-                PercentChange = Convert.ToDouble(responseDictionary?["dp"] ?? 0),
-                HighPriceOfTheDay = Convert.ToDouble(responseDictionary?["h"] ?? 0),
-                LowPriceOfTheDay = Convert.ToDouble(responseDictionary?["l"] ?? 0),
-                OpenPriceOfTheDay = Convert.ToDouble(responseDictionary?["o"] ?? 0),
-                PreviousClosePrice = Convert.ToDouble(responseDictionary?["pc"] ?? 0),
+                StockSymbol = currentStockSymbol,
+                CurrentPrice = Convert.ToDouble(responseDictionary?["c"].ToString()),
+                Change = Convert.ToDouble(responseDictionary?["d"].ToString()),
+                PercentChange = Convert.ToDouble(responseDictionary?["dp"].ToString()),
+                HighPriceOfTheDay = Convert.ToDouble(responseDictionary?["h"].ToString()),
+                LowPriceOfTheDay = Convert.ToDouble(responseDictionary?["l"].ToString()),
+                OpenPriceOfTheDay = Convert.ToDouble(responseDictionary?["o"].ToString()),
+                PreviousClosePrice = Convert.ToDouble(responseDictionary?["pc"].ToString()),
             };
 
-            return View();
+            return View(stock);
         }
     }
 }

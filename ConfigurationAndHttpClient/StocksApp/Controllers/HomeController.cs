@@ -15,11 +15,24 @@ namespace StocksApp.Controllers
             _finnhubOptions = options.Value;
         }
 
-        [HttpGet("/")]
-        public async Task<IActionResult> Index()
+        [HttpGet("/{stockSymbol?}")]
+        public async Task<IActionResult> Index(string? stockSymbol)
         {
+            string currentStockSymbol = stockSymbol ?? _finnhubOptions.DefaultStockSymbol;
+
             Dictionary<string, object>? responseDictionary = 
-            await _finnhubService.GetStockPriceQuote(_finnhubOptions.DefaultStockSymbol);
+            await _finnhubService.GetStockPriceQuote(currentStockSymbol);
+
+            Stock stock = new Stock() {
+                StockSymbol = stockSymbol,
+                CurrentPrice = Convert.ToDouble(responseDictionary?["c"] ?? 0),
+                Change = Convert.ToDouble(responseDictionary?["d"] ?? 0),
+                PercentChange = Convert.ToDouble(responseDictionary?["dp"] ?? 0),
+                HighPriceOfTheDay = Convert.ToDouble(responseDictionary?["h"] ?? 0),
+                LowPriceOfTheDay = Convert.ToDouble(responseDictionary?["l"] ?? 0),
+                OpenPriceOfTheDay = Convert.ToDouble(responseDictionary?["o"] ?? 0),
+                PreviousClosePrice = Convert.ToDouble(responseDictionary?["pc"] ?? 0),
+            };
 
             return View();
         }

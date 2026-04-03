@@ -2,6 +2,8 @@ using ProductHub.Middlewares;
 
 var builder = WebApplication.CreateBuilder(args);
 builder.Services.AddControllers();
+builder.Services.AddTransient<RequestLoggingMiddleware>();
+
 var app = builder.Build();
 
 app.UseGlobalExceptionMiddleware();

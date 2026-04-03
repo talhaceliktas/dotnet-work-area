@@ -17,6 +17,7 @@ namespace StocksApp.Services
         public async Task method()
         {
             using (HttpClient httpClient = _httpClientFactory.CreateClient()) {
+
                 HttpRequestMessage requestMessage = new HttpRequestMessage()
                 {
                     RequestUri = new Uri($"{_finnhubOptions.BaseUrl}quote?symbol=AAPL&token={_finnhubOptions.UserSecret}"),

@@ -4,7 +4,7 @@
     <TargetFramework>net10.0</TargetFramework>
     <Nullable>enable</Nullable>
     <ImplicitUsings>enable</ImplicitUsings>
-    <RootNamespace>Example_4</RootNamespace>
+    <RootNamespace>ControllersExample</RootNamespace>
   </PropertyGroup>
 
 </Project>

@@ -1,5 +1,4 @@
 <Solution>
-  <Project Path="Example-2/Example-2.csproj" Id="81b5b187-8ce8-4230-84ea-67858adf9c0d" />
   <Project Path="RoutingExample/RoutingExample.csproj" Id="ed338fae-a350-4fa8-87c8-a9cd0cd0c5c2" />
   <Project Path="StaticFilesExample/StaticFilesExample.csproj" Id="ddaf6e72-5f3c-4fdc-a712-8117f5d98c7d" />
 </Solution>

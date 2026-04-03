@@ -1,10 +1,11 @@
 ﻿using Microsoft.Extensions.Options;
 using StocksApp.Models;
+using StocksApp.ServiceContracts;
 using System.Text.Json;
 
 namespace StocksApp.Services
 {
-    public class FinnhubService
+    public class FinnhubService : IFinnhubService
     {
         private readonly IHttpClientFactory _httpClientFactory;
         private readonly FinnhubOptions _finnhubOptions;
@@ -15,7 +16,7 @@ namespace StocksApp.Services
             _finnhubOptions = options.Value;
         }
 
-        public async Task method()
+        public async Task<Dictionary<string, object>> GetStockPriceQuote(string stockSymbol)
         {
             using (HttpClient httpClient = _httpClientFactory.CreateClient()) {
 
@@ -34,7 +35,16 @@ namespace StocksApp.Services
                 string response = streamReader.ReadToEnd();
 
                 Dictionary<string, object>? dictionary =
-                JsonSerializer.Deserialize<Dictionary<string, object>>(response);
+                    JsonSerializer.Deserialize<Dictionary<string, object>>(response);
+
+                if (dictionary == null) {
+                    throw new InvalidOperationException("No response from finnhub server");
+                }
+                if (dictionary.ContainsKey("error")) {
+                    throw new InvalidOperationException("Error");
+                }
+
+                return dictionary;
             }
         }
     }

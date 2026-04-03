@@ -9,4 +9,12 @@
             Console.WriteLine($"[LOG] {DateTime.Now:HH:mm:ss} | {context.Request.Method} {context.Response.StatusCode} | Completed");
         }
     }
+
+    public static class RequestLoggingExtensions
+    {
+        public static IApplicationBuilder UseRequestLogging(this IApplicationBuilder builder)
+        {
+            return builder.UseMiddleware<RequestLoggingMiddleware>();
+        }
+    }
 }

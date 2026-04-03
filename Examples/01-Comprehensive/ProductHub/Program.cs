@@ -10,6 +10,17 @@ app.UseGlobalExceptionMiddleware();
 app.UseRequestLogging();
 app.UsePerformanceMiddleware();
 app.UseRouting();
+
+app.UseWhen(context => context.Request.Path.StartsWithSegments("/api/admin"), appBuilder =>
+{
+    appBuilder.Use(async (context, next) =>
+    {
+        context.Response.Headers.Append("X-Admin-Access", "true");
+
+        await next();
+    });
+});
+
 app.MapControllers();
 
 

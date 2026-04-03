@@ -42,9 +42,14 @@ namespace ProductHub.Controllers
         }
 
         [HttpPost("products")]
-        public IActionResult CreateProduct()
+        public IActionResult CreateProduct([FromBody] Product? requestProduct)
         {
-            return View();
+            if (requestProduct == null) {
+                return BadRequest();
+            }
+            ProductStore.ProductList.Add(requestProduct);
+            return CreatedAtAction(nameof(GetProductById), new { id = requestProduct.Id }, requestProduct);
+
         }
 
         [HttpPost("products/report/{year:int:min(2020)}/{month:regex(^(jan|feb)}")]

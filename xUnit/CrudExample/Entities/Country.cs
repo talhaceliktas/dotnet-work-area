@@ -3,7 +3,7 @@
     /// <summary>
     /// Domain model for Country
     /// </summary>
-    public class ICountriesService
+    public class Country
     {
         public Guid CountryID { get; set; }
 
